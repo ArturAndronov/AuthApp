@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+<h2>Вход</h2>
+<form asp-action="Login" method="post">
+    <div>
+        <label>Имя пользователя:</label><br />
+        <input type="text" name="username" />
+    </div>
+    <div>
+        <label>Пароль:</label><br />
+        <input type="password" name="password" />
+    </div>
+    <button type="submit">Войти</button>
+</form>
