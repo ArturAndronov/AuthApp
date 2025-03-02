@@ -263,3 +263,12 @@ C:\Users\artur\source\repos\AuthApp\AuthApp\bin\Debug\net8.0\tr\Microsoft.CodeAn
 C:\Users\artur\source\repos\AuthApp\AuthApp\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\artur\source\repos\AuthApp\AuthApp\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\artur\source\repos\AuthApp\AuthApp\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+C:\Users\artur\source\repos\AuthApp\AuthApp\bin\Debug\net8.0\BCrypt.Net-Next.dll
+C:\Users\artur\source\repos\AuthApp\AuthApp\obj\Debug\net8.0\AuthApp.sourcelink.json
+C:\Users\artur\source\repos\AuthApp\AuthApp\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+C:\Users\artur\source\repos\AuthApp\AuthApp\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\artur\source\repos\AuthApp\AuthApp\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
+C:\Users\artur\source\repos\AuthApp\AuthApp\bin\Debug\net8.0\Microsoft.Extensions.WebEncoders.dll
+C:\Users\artur\source\repos\AuthApp\AuthApp\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\artur\source\repos\AuthApp\AuthApp\bin\Debug\net8.0\System.Security.Cryptography.Xml.dll
+C:\Users\artur\source\repos\AuthApp\AuthApp\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
