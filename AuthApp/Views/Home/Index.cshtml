@@ -4,3 +4,19 @@
 
 <h2>Добро пожаловать!</h2>
 <p>Это главная страница вашего приложения.</p>
+
+<h2>Посты</h2>
+
+<a asp-action="CreatePost">Создать пост</a>
+
+@foreach (var post in Model)
+{
+    <div>
+        <h3>@post.Title</h3>
+        <p>@post.Content</p>
+        <p>Author: @post.Author.Username</p>
+        <form asp-action="DeletePost" asp-route-id="@post.Id" method="post">
+            <button type="submit">Удалить</button>
+        </form>
+    </div>
+}

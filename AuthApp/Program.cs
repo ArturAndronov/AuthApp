@@ -15,9 +15,6 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
-string password = "123";
-string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
-Console.WriteLine(hashedPassword);
 
 var app = builder.Build();
 
