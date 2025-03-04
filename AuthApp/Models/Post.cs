@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AuthApp.Models
 {
@@ -11,9 +10,6 @@ namespace AuthApp.Models
         public string Title { get; set; }
         [Required]
         public string Content { get; set; }
-        [ForeignKey("Author")]
-        public int AuthorId { get; set; }
-        //[Required]
-        public User Author { get; set; }
+
     }
 }

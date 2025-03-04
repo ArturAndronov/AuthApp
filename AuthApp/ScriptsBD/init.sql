@@ -11,9 +11,5 @@ create index idx_email on Users(Email);
 create table Posts (
 	Id serial primary key,
 	Title varchar(255) not null,
-	Content text not null,
-	AuthorId Integer Not null,
-	foreign key (AuthorId) References Users(Id)
+	Content text not null
 );
-
-Create index idx_author_id on Posts (AuthorId);

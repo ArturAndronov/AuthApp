@@ -1,8 +1,8 @@
 ﻿using AuthApp.Data;
 using AuthApp.Models;
 using Microsoft.AspNetCore.Mvc;
-using AuthApp.Data; // Замени RegistrationApp на имя твоего проекта
-using AuthApp.Models; // Замени RegistrationApp на имя твоего проекта
+using AuthApp.Data; 
+using AuthApp.Models;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using BCrypt.Net;
