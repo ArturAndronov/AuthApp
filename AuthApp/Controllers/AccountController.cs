@@ -56,8 +56,13 @@ public class AccountController : Controller
             var claims = new List<Claim>
         {
             new Claim(ClaimTypes.Name, user.Username),
+            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
         };
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var authProperties = new AuthenticationProperties
+            {
+                IsPersistent = true 
+            };
 
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
             return RedirectToAction("Index", "Home");
@@ -68,6 +73,11 @@ public class AccountController : Controller
     public async Task<IActionResult> Logout()
     {
         await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-        return RedirectToAction("Index", "Account");
+        return RedirectToAction("Login");
+    }
+
+    public IActionResult AccessDenied()
+    {
+        return View(); 
     }
 }

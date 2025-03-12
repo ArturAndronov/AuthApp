@@ -9,6 +9,7 @@
     <div>
         <h3>@post.Title</h3>
         <p>@post.Content</p>
+        <p><strong>Автор:</strong> @post.Author?.Username</p> 
         <form asp-action="Delete" asp-route-id="@post.Id" method="post">
             <button type="submit">Удалить</button>
         </form>

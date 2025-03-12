@@ -1,9 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using AuthApp.Data;
 using AuthApp.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 
 namespace AuthApp.Controllers
 {
+    [Authorize]
     public class PostController : Controller
     {
         private readonly AppDbContext _context;
@@ -15,7 +19,7 @@ namespace AuthApp.Controllers
 
         public IActionResult Index()
         {
-            var posts = _context.Posts.ToList();
+            var posts = _context.Posts.Include(p => p.Author).ToList();
             return View(posts);
         }
 
@@ -29,12 +33,23 @@ namespace AuthApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Posts.Add(post);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+                if (int.TryParse(userId, out int authorId))
+                {
+                    post.AuthorId = authorId; 
+                    _context.Posts.Add(post);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return Unauthorized(); 
+                }
             }
             return View(post);
         }
+
 
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
