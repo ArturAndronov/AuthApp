@@ -19,7 +19,7 @@ namespace AuthApp.Controllers
 
         public IActionResult Index()
         {
-            var posts = _context.Posts.Include(p => p.Author).ToList();
+            var posts = _context.Posts.Include(p => p.User).ToList();
             return View(posts);
         }
 
@@ -37,14 +37,14 @@ namespace AuthApp.Controllers
 
                 if (int.TryParse(userId, out int authorId))
                 {
-                    post.AuthorId = authorId; 
+                    post.UserId = authorId;
                     _context.Posts.Add(post);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
                 else
                 {
-                    return Unauthorized(); 
+                    return Unauthorized();
                 }
             }
             return View(post);

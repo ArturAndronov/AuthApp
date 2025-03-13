@@ -8,17 +8,12 @@ namespace AuthApp.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
-        [Required]
-        public string Content { get; set; }
+        public string? Content { get; set; }
 
-        // Явное указание внешнего ключа
-        [Required]
-        public int AuthorId { get; set; }
-
-        [ForeignKey("AuthorId")]
-        public User Author { get; set; }
+        [ForeignKey("User")]
+        public int UserId { get; set; } 
+        public User? User { get; set; }
     }
 }

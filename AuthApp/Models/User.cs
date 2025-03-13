@@ -7,14 +7,12 @@ namespace AuthApp.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        public string Username { get; set; }
+        public string? Username { get; set; }
 
-        [Required]
-        public string Password { get; set; }
+        public string? Password { get; set; }
 
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; }
+        public string? Email { get; set; }
+
+        public ICollection<Post>? Posts { get; set; }
     }
 }
