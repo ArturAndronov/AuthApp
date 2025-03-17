@@ -1,15 +1,27 @@
-﻿@{
+﻿@model AuthApp.Models.User
+@{
     ViewData["Title"] = "Login";
 }
-<h2>Вход</h2>
-<form asp-action="Login" method="post">
-    <div>
-        <label>Имя пользователя:</label><br />
-        <input type="text" name="username" />
+<div class="row justify-content-center mt-5">
+    <div class="col-md-4">
+        <h2 class="text-center mb-4">Вход</h2>
+        <form asp-action="Login" method="post">
+            <div class="form-group mb-3">
+                <label asp-for="Username" class="form-label">Имя пользователя</label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Password" class="form-label">Пароль</label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <button type="submit" class="btn btn-primary w-100">Войти</button>
+            </div>
+        </form>
+        <div class="text-center">
+            <a asp-action="Register" class="btn btn-link">Регистрация</a>
+        </div>
     </div>
-    <div>
-        <label>Пароль:</label><br />
-        <input type="password" name="password" />
-    </div>
-    <button type="submit">Войти</button>
-</form>
+</div>

@@ -4,6 +4,7 @@ using AuthApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace AuthApp.Controllers
 {
@@ -15,6 +16,55 @@ namespace AuthApp.Controllers
         public PostController(AppDbContext context)
         {
             _context = context;
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var post = await _context.Posts.FindAsync(id);
+            if(post == null)
+            {
+                return NotFound();
+            }
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (post.UserId.ToString() != userId)
+            {
+                return Forbid(); 
+            }
+            return View(post);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, Post updatedPost)
+        {
+            if (id != updatedPost.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                var post = await _context.Posts.FindAsync(id);
+                if (post == null)
+                {
+                    return NotFound();
+                }
+
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                if (post.UserId.ToString() != userId)
+                {
+                    return Forbid();
+                }
+
+                post.Title = updatedPost.Title;
+                post.Content = updatedPost.Content;
+
+                _context.Posts.Update(post);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction(nameof(Index));
+            }
+            return View(updatedPost);
         }
 
         public IActionResult Index()
